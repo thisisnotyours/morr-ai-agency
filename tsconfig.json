@@ -30,8 +30,9 @@
   },
   "include": [
     "src/**/*",
-    ".next/types/**/*.ts"
-  ],
+    ".next/types/**/*.ts",
+    "src/types/declarations.d.ts"
+  ],  
   "exclude": [
     "node_modules"
   ]

@@ -51,7 +51,7 @@ export const MenuItem = ({
       <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
-        onClick={handleClick} // 메뉴 클릭 시 섹션으로 이동
+        onClick={handleClick} // 메뉴 클릭 시 섹션으로 이동 및 드롭다운 닫기
       >
         {item}
       </motion.p>
@@ -86,6 +86,7 @@ export const FeatureItem = ({
   src,
   sectionId,
   setMobileOpen,
+  setActive,
 }: {
   title: string;
   description: string;
@@ -93,12 +94,16 @@ export const FeatureItem = ({
   src: string;
   sectionId?: string;
   setMobileOpen?: (open: boolean) => void;
+  setActive?: (item: string | null) => void;
 }) => {
   const handleClick = () => {
     if (sectionId) {
       scrollToSection(sectionId);
       if (setMobileOpen) {
         setMobileOpen(false); // 모바일 메뉴 닫기
+      }
+      if (setActive) {
+        setActive(null); // 드롭다운 닫기
       }
     }
   };
@@ -129,17 +134,22 @@ export const HoveredLink = ({
   className = "",
   sectionId,
   setMobileOpen,
+  setActive,
 }: {
   children: React.ReactNode;
   className?: string;
   sectionId?: string;
   setMobileOpen?: (open: boolean) => void;
+  setActive?: (item: string | null) => void;
 }) => {
   const handleClick = () => {
     if (sectionId) {
       scrollToSection(sectionId);
       if (setMobileOpen) {
         setMobileOpen(false); // 모바일 메뉴 닫기
+      }
+      if (setActive) {
+        setActive(null); // 드롭다운 닫기
       }
     }
   };

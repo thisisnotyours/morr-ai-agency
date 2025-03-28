@@ -45,7 +45,7 @@ const NavbarMenu = ({ className }: { className?: string }) => {
     <div
       className={cn(
         "fixed top-6 inset-x-0 z-50 mx-auto transition-all duration-500",
-        scrolled ? "max-w-4xl" : "max-w-6xl",
+        scrolled ? "max-w-4xl" : "max-w-[1200px]", // 히어로 섹션과 동일한 max-width
         className
       )}
       onMouseLeave={() => setActive(null)} // 메뉴와 드롭다운 전체에서 마우스가 벗어날 때 닫기
@@ -58,11 +58,14 @@ const NavbarMenu = ({ className }: { className?: string }) => {
       >
         {/* Logo */}
         <div
-          onClick={() => scrollToSection("hero")} // 로고 클릭 시 Hero 섹션으로 이동
+          onClick={() => {
+            scrollToSection("hero"); // 로고 클릭 시 Hero 섹션으로 이동
+            setMobileOpen(false); // 모바일 메뉴 닫기
+          }}
           className="cursor-pointer"
         >
           <div className="flex items-center space-x-2">
-            <Image src="/logo.svg" alt="Logo" width={32} height={32} />
+            <Image src="/imgs/morr_logo.png" alt="Logo" width={32} height={32} />
             <span className="text-lg font-semibold bg-gradient-to-r from-pink-500 to-indigo-500 text-transparent bg-clip-text">
               MORR
             </span>
@@ -72,7 +75,10 @@ const NavbarMenu = ({ className }: { className?: string }) => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center justify-center space-x-6">
           <div
-            onClick={() => scrollToSection("about")} // About Us 클릭 시 About 섹션으로 이동
+            onClick={() => {
+              scrollToSection("about"); // About Us 클릭 시 About 섹션으로 이동
+              setActive(null); // 드롭다운 닫기
+            }}
             className="hover:text-red-500 transition cursor-pointer"
             onMouseEnter={() => setActive(null)} // "About Us"로 이동 시 드롭다운 닫기
           >
@@ -85,43 +91,61 @@ const NavbarMenu = ({ className }: { className?: string }) => {
                 src="https://assets.aceternity.com/demos/algochurn.webp"
                 description="Prepare for tech interviews like never before."
                 sectionId="features"
+                setActive={setActive}
               />
               <FeatureItem
                 title="Tailwind Master Kit"
                 src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
                 description="Production ready Tailwind css components for your next project"
                 sectionId="features"
+                setActive={setActive}
               />
               <FeatureItem
                 title="Moonbeam"
                 src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
                 description="Never write from scratch again. Go from idea to blog in minutes."
                 sectionId="features"
+                setActive={setActive}
               />
               <FeatureItem
                 title="Rogue"
                 src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
                 description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
                 sectionId="features"
+                setActive={setActive}
               />
             </div>
           </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Benefits">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink sectionId="benefits">Web Development</HoveredLink>
-              <HoveredLink sectionId="benefits">Interface Design</HoveredLink>
-              <HoveredLink sectionId="benefits">
+              <HoveredLink sectionId="benefits" setActive={setActive}>
+                Web Development
+              </HoveredLink>
+              <HoveredLink sectionId="benefits" setActive={setActive}>
+                Interface Design
+              </HoveredLink>
+              <HoveredLink sectionId="benefits" setActive={setActive}>
                 Search Engine Optimization
               </HoveredLink>
-              <HoveredLink sectionId="benefits">Branding</HoveredLink>
+              <HoveredLink sectionId="benefits" setActive={setActive}>
+                Branding
+              </HoveredLink>
             </div>
           </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Use Cases">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink sectionId="use-cases">Hobby</HoveredLink>
-              <HoveredLink sectionId="use-cases">Individual</HoveredLink>
-              <HoveredLink sectionId="use-cases">Team</HoveredLink>
-              <HoveredLink sectionId="use-cases">Enterprise</HoveredLink>
+              <HoveredLink sectionId="use-cases" setActive={setActive}>
+                Hobby
+              </HoveredLink>
+              <HoveredLink sectionId="use-cases" setActive={setActive}>
+                Individual
+              </HoveredLink>
+              <HoveredLink sectionId="use-cases" setActive={setActive}>
+                Team
+              </HoveredLink>
+              <HoveredLink sectionId="use-cases" setActive={setActive}>
+                Enterprise
+              </HoveredLink>
             </div>
           </MenuItem>
         </div>
