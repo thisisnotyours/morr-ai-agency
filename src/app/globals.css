@@ -76,6 +76,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+    /* MORR 색상 추가 */
+    --morr-main: #b5002b;
+    --morr-sub: #F5CABB;
 }
 
 .dark {

@@ -1,0 +1,80 @@
+.headline {
+  font-family: 'Poppins', monospace;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.subheading {
+  font-family: 'Poppins', monospace;
+  font-size: 1.3rem;
+  /* color: #4a5568; */
+  color: #000000;
+  margin-bottom: 4rem;
+  line-height: 1.2;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 3rem 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.featureTitle {
+  font-weight: 600;
+  font-size: 1.2rem !important; /* 기본 크기 */
+  color: #000000;
+}
+
+/* feature.content의 폰트 크기 설정 */
+.featureContent {
+  font-size: 1.1rem !important; /* 기본 크기 */
+  color: #4a5568;
+}
+
+@media (min-width: 768px) {
+  .featureContent {
+    font-size: 1.2rem !important; /* 데스크탑 크기 */
+  }
+}
+
+@media (max-width: 640px) {
+  .featureTitle {
+    font-weight: 600;
+    font-size: 1.2rem !important; /* 기본 크기 */
+    color: #000000;
+  } 
+
+  .featureContent {
+    font-size: 1.1rem !important; /* 모바일 크기 */
+  }
+
+  .headline {
+    font-size: 1.5rem;
+  }
+
+  .subheading {
+    font-size: 1.2rem;
+    margin-bottom: 0rem;
+  }
+
+  .featureTitle {
+    font-weight: 600;
+    font-size: 1.1rem !important; /* 기본 크기 */
+    color: #000000;
+  }
+
+  .featureContent {
+    font-size: 1rem !important; /* 기본 크기 */
+    color: #4a5568;
+  }
+}

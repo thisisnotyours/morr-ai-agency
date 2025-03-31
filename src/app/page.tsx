@@ -5,7 +5,7 @@ import Features from "@/components/layout/sections/Features";
 import Benefits from "@/components/layout/sections/Benefits";
 import UseCases from "@/components/layout/sections/UseCases";
 import Footer from "@/components/layout/footer";
-
+import ContactUs from "@/components/layout/sections/ContactUs";
 // SEO 메타데이터 추가
 export const metadata = {
   title: 'MORR AI Agent - Voice & Chat AI That Speaks Your Business',
@@ -21,6 +21,7 @@ export default function Home() {
       <Features />
       <Benefits />
       <UseCases />
+      <ContactUs />
       <Footer />
     </div>
   );

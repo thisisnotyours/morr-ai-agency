@@ -6,8 +6,18 @@ import { HoveredLink, MenuItem, FeatureItem } from "@/components/ui/navbar-menu"
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Inconsolata, Poppins } from '@next/font/google';
 
-// 섹션으로 스크롤 이동하는 함수
+const inconsolata = Inconsolata({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
+
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
   if (section) {
@@ -20,7 +30,6 @@ const NavbarMenu = ({ className }: { className?: string }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // ✅ 스크롤 축소 효과
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -29,7 +38,6 @@ const NavbarMenu = ({ className }: { className?: string }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ 모바일 메뉴 열렸을 때 배경 스크롤 방지
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
@@ -45,30 +53,28 @@ const NavbarMenu = ({ className }: { className?: string }) => {
     <div
       className={cn(
         "fixed top-6 inset-x-0 z-50 mx-auto transition-all duration-500",
-        scrolled ? "max-w-4xl" : "max-w-[1200px]", // 히어로 섹션과 동일한 max-width
-        className
+        scrolled ? "max-w-4xl" : "max-w-[1200px]",
+        className,
+        poppins.className
       )}
-      onMouseLeave={() => setActive(null)} // 메뉴와 드롭다운 전체에서 마우스가 벗어날 때 닫기
+      onMouseLeave={() => setActive(null)}
     >
       <div
         className={cn(
-          "relative rounded-full border dark:border-white/20 border-black/10 bg-white dark:bg-black shadow-input px-6 py-4 flex items-center justify-between overflow-visible transition-all duration-500",
+          "shadow-2xl relative rounded-lg border dark:border-white/20 border-black/10 bg-white dark:bg-black shadow-input px-6 py-4 flex items-center justify-between overflow-visible transition-all duration-500",
           scrolled && "px-4 py-2"
         )}
       >
         {/* Logo */}
         <div
           onClick={() => {
-            scrollToSection("hero"); // 로고 클릭 시 Hero 섹션으로 이동
-            setMobileOpen(false); // 모바일 메뉴 닫기
+            scrollToSection("hero");
+            setMobileOpen(false);
           }}
           className="cursor-pointer"
         >
           <div className="flex items-center space-x-2">
-            <Image src="/imgs/morr_logo.png" alt="Logo" width={32} height={32} />
-            <span className="text-lg font-semibold bg-gradient-to-r from-pink-500 to-indigo-500 text-transparent bg-clip-text">
-              MORR
-            </span>
+            <Image src="/morr_logo.png" alt="Logo" width={80} height={62} />
           </div>
         </div>
 
@@ -76,41 +82,55 @@ const NavbarMenu = ({ className }: { className?: string }) => {
         <div className="hidden md:flex items-center justify-center space-x-6">
           <div
             onClick={() => {
-              scrollToSection("about"); // About Us 클릭 시 About 섹션으로 이동
-              setActive(null); // 드롭다운 닫기
+              scrollToSection("about");
+              setActive(null);
             }}
-            className="hover:text-red-500 transition cursor-pointer"
-            onMouseEnter={() => setActive(null)} // "About Us"로 이동 시 드롭다운 닫기
+            className="hover:font-semibold transition cursor-pointer font-Poppins text-lg"
+            onMouseEnter={() => setActive(null)}
           >
             About Us
           </div>
           <MenuItem setActive={setActive} active={active} item="Features">
             <div className="text-sm grid grid-cols-2 gap-10 p-4">
               <FeatureItem
-                title="Algochurn"
-                src="https://assets.aceternity.com/demos/algochurn.webp"
-                description="Prepare for tech interviews like never before."
+                title="Real Voice, Real Results"
+                src="/real_voice.svg"
+                description="Talks naturally, understands intent, and nails every response—phone calls just got smarter."
                 sectionId="features"
                 setActive={setActive}
               />
               <FeatureItem
-                title="Tailwind Master Kit"
-                src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-                description="Production ready Tailwind css components for your next project"
+                title="Chatbot That Doesn’t Sleep"
+                src="/chatbot.svg"
+                description="Instant replies on WhatsApp, websites, or anywhere your customers are—day or night."
                 sectionId="features"
                 setActive={setActive}
               />
               <FeatureItem
-                title="Moonbeam"
-                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-                description="Never write from scratch again. Go from idea to blog in minutes."
+                title="Malaysian Multilingual Magic"
+                src="/malay.svg"
+                description="Switches effortlessly between Bahasa Malaysia, English, Mandarin, and more—your customers feel right at home."
                 sectionId="features"
                 setActive={setActive}
               />
               <FeatureItem
-                title="Rogue"
-                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+                title="Always On, Always Ready"
+                src="/support.svg"
+                description="24/7 support that never takes a break, so you don’t have to either."
+                sectionId="features"
+                setActive={setActive}
+              />
+              <FeatureItem
+                title="Plug-and-Play Power"
+                src="/plug.svg"
+                description="Hooks into your CRM, phone system, or website in minutes—no tech degree needed."
+                sectionId="features"
+                setActive={setActive}
+              />
+              <FeatureItem
+                title="Local Smarts"
+                src="/slang.svg"
+                description="Gets Malaysian slang, tone, and context—because “lah” isn’t just a word, it’s a vibe."
                 sectionId="features"
                 setActive={setActive}
               />
@@ -119,32 +139,38 @@ const NavbarMenu = ({ className }: { className?: string }) => {
           <MenuItem setActive={setActive} active={active} item="Benefits">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink sectionId="benefits" setActive={setActive}>
-                Web Development
+                Customers Love It
               </HoveredLink>
               <HoveredLink sectionId="benefits" setActive={setActive}>
-                Interface Design
+                Slash Your Costs
               </HoveredLink>
               <HoveredLink sectionId="benefits" setActive={setActive}>
-                Search Engine Optimization
+                Grow Without Limits
               </HoveredLink>
               <HoveredLink sectionId="benefits" setActive={setActive}>
-                Branding
+                Beat the Competition
+              </HoveredLink>
+              <HoveredLink sectionId="benefits" setActive={setActive}>
+                Work Less, Win More
               </HoveredLink>
             </div>
           </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Use Cases">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink sectionId="use-cases" setActive={setActive}>
-                Hobby
+                Retail & E-Commerce
               </HoveredLink>
               <HoveredLink sectionId="use-cases" setActive={setActive}>
-                Individual
+                Food & Beverage
               </HoveredLink>
               <HoveredLink sectionId="use-cases" setActive={setActive}>
-                Team
+                Telcos & Utilities
               </HoveredLink>
               <HoveredLink sectionId="use-cases" setActive={setActive}>
-                Enterprise
+                Logistics
+              </HoveredLink>
+              <HoveredLink sectionId="use-cases" setActive={setActive}>
+                Startups & SMEs
               </HoveredLink>
             </div>
           </MenuItem>
@@ -157,12 +183,16 @@ const NavbarMenu = ({ className }: { className?: string }) => {
           </button>
         </div>
 
-        <Link
-          href="/get-started"
-          className="hidden md:block px-5 py-2 text-sm font-medium text-white bg-black dark:bg-white dark:text-black rounded-full hover:opacity-90 transition z-10"
-        >
+        <p
+          className="font-size: 1rem hidden md:block px-5 py-2 text-base font-normal text-white bg-black dark:bg-white dark:text-black rounded-md hover:opacity-90 transition z-10"
+          //  style={{ fontSize: '1.2rem' }} // ⭐ 강제 적용
+           onClick={() => {
+              scrollToSection("contact");
+              setMobileOpen(false);
+          }}
+            >
           Get Started
-        </Link>
+        </p>
       </div>
 
       {/* Mobile Menu */}
@@ -178,49 +208,71 @@ const NavbarMenu = ({ className }: { className?: string }) => {
             <div
               onClick={() => {
                 scrollToSection("about");
-                setMobileOpen(false); // 모바일 메뉴 닫기
+                setMobileOpen(false);
               }}
-              className="cursor-pointer"
+              className="cursor-pointer font-poppins text-lg" // ⭐ 인라인 스타일 제거, text-lg 유지
+              style={{ fontSize: '1.3rem' }} // ⭐ 강제 적용을 위해 인라인 스타일 추가 (text-lg와 동일)
             >
               About Us
             </div>
 
             <div>
               <p
-                className="font-semibold mb-2 mt-8 cursor-pointer"
+                className="font-semibold mb-2 mt-8 cursor-pointer font-Poppins text-lg"
+                style={{ fontSize: '1.3rem' }} // ⭐ 강제 적용
                 onClick={() => {
                   scrollToSection("features");
-                  setMobileOpen(false); // 모바일 메뉴 닫기
+                  setMobileOpen(false);
                 }}
               >
                 Features
               </p>
               <div className="grid grid-cols-1 gap-6">
                 <FeatureItem
-                  title="Algochurn"
-                  src="https://assets.aceternity.com/demos/algochurn.webp"
-                  description="Prepare for tech interviews like never before."
+                  title="Real Voice, Real Results"
+                  src="/real_voice.svg"
+                  // description="Talks naturally, understands intent, and nails every response—phone calls just got smarter."
+                  description=""
                   sectionId="features"
                   setMobileOpen={setMobileOpen}
                 />
                 <FeatureItem
-                  title="Tailwind Master Kit"
-                  src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-                  description="Production ready Tailwind css components for your next project"
+                  title="Chatbot That Doesn’t Sleep"
+                  src="/chatbot.svg"
+                  // description="Instant replies on WhatsApp, websites, or anywhere your customers are—day or night."
+                  description=""
                   sectionId="features"
                   setMobileOpen={setMobileOpen}
                 />
                 <FeatureItem
-                  title="Moonbeam"
-                  src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-                  description="Never write from scratch again. Go from idea to blog in minutes."
+                  title="Malaysian Multilingual Magic"
+                  src="/malay.svg"
+                  // description="Switches effortlessly between Bahasa Malaysia, English, Mandarin, and more—your customers feel right at home."
+                  description=""
                   sectionId="features"
                   setMobileOpen={setMobileOpen}
                 />
                 <FeatureItem
-                  title="Rogue"
-                  src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                  description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+                  title="Always On, Always Ready"
+                  src="/support.svg"
+                  // description="24/7 support that never takes a break, so you don’t have to either."
+                  description=""
+                  sectionId="features"
+                  setMobileOpen={setMobileOpen}
+                />
+                <FeatureItem
+                  title="Plug-and-Play Power"
+                  src="/plug.svg"
+                  // description="Hooks into your CRM, phone system, or website in minutes—no tech degree needed."
+                  description=""
+                  sectionId="features"
+                  setMobileOpen={setMobileOpen}
+                />
+                <FeatureItem
+                  title="Local Smarts"
+                  src="/slang.svg"
+                  // description="Gets Malaysian slang, tone, and context—because “lah” isn’t just a word, it’s a vibe."
+                  description=""
                   sectionId="features"
                   setMobileOpen={setMobileOpen}
                 />
@@ -229,62 +281,76 @@ const NavbarMenu = ({ className }: { className?: string }) => {
 
             <div>
               <p
-                className="font-semibold mb-2 mt-8 cursor-pointer"
+                className="font-semibold mb-2 mt-8 cursor-pointer font-poppins text-lg"
+                style={{ fontSize: '1.3rem' }} // ⭐ 강제 적용
                 onClick={() => {
                   scrollToSection("benefits");
-                  setMobileOpen(false); // 모바일 메뉴 닫기
+                  setMobileOpen(false);
                 }}
               >
                 Benefits
               </p>
               <div className="flex flex-col space-y-2">
                 <HoveredLink sectionId="benefits" setMobileOpen={setMobileOpen}>
-                  Web Development
+                  Customers Love It
                 </HoveredLink>
                 <HoveredLink sectionId="benefits" setMobileOpen={setMobileOpen}>
-                  Interface Design
+                  Slash Your Costs
                 </HoveredLink>
                 <HoveredLink sectionId="benefits" setMobileOpen={setMobileOpen}>
-                  Search Engine Optimization
+                  Grow Without Limits
                 </HoveredLink>
                 <HoveredLink sectionId="benefits" setMobileOpen={setMobileOpen}>
-                  Branding
+                  Beat the Competition
+                </HoveredLink>
+                <HoveredLink sectionId="benefits" setMobileOpen={setMobileOpen}>
+                  Work Less, Win More
                 </HoveredLink>
               </div>
             </div>
 
             <div>
               <p
-                className="font-semibold mb-2 mt-5 cursor-pointer"
+                className="font-semibold mb-2 mt-5 cursor-pointer font-poppins text-lg"
+                style={{ fontSize: '1.3rem' }} // ⭐ 강제 적용
                 onClick={() => {
                   scrollToSection("use-cases");
-                  setMobileOpen(false); // 모바일 메뉴 닫기
+                  setMobileOpen(false);
                 }}
               >
                 Use Cases
               </p>
               <div className="flex flex-col space-y-2">
                 <HoveredLink sectionId="use-cases" setMobileOpen={setMobileOpen}>
-                  Hobby
+                  Retail & E-Commerce
                 </HoveredLink>
                 <HoveredLink sectionId="use-cases" setMobileOpen={setMobileOpen}>
-                  Individual
+                  Food & Beverage
                 </HoveredLink>
                 <HoveredLink sectionId="use-cases" setMobileOpen={setMobileOpen}>
-                  Team
+                  Telcos & Utilities
                 </HoveredLink>
                 <HoveredLink sectionId="use-cases" setMobileOpen={setMobileOpen}>
-                  Enterprise
+                  Logistics
+                </HoveredLink>
+                <HoveredLink sectionId="use-cases" setMobileOpen={setMobileOpen}>
+                  Startups & SMEs
                 </HoveredLink>
               </div>
             </div>
 
-            <Link
-              href="/get-started"
-              className="block w-full text-center px-5 py-3 text-sm font-medium text-white bg-black dark:bg-white dark:text-black rounded-full hover:opacity-90 transition"
-            >
-              Get Started
-            </Link>
+
+            <p
+              className="text-xl font-bold block w-full text-center px-5 py-3 text-sm font-medium text-white bg-black dark:bg-white dark:text-black rounded-md hover:opacity-90 transition"
+              style={{ fontSize: '1.3rem' }} // ⭐ 강제 적용
+              onClick={() => {
+                scrollToSection("contact");
+                setMobileOpen(false);
+              }}
+              >
+                Get Started
+              </p>
+
           </motion.div>
         )}
       </AnimatePresence>

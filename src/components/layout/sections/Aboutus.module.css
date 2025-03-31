@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700;900&display=swap');
+
+.aboutUs {
+  background: #ffffff;
+  padding: 0rem 2rem;
+  /* min-height를 100vh에서 33.33vh로 줄임 */
+  min-height: 50vh;
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  color: #000000; /* 기본 텍스트 색상 */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* 세로로 배치 */
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  text-align: center; /* 모든 텍스트 가운데 정렬 */
+  width: 100%;
+  height: min-content;
+  padding-bottom: 3rem;
+}
+
+/* 콘텐츠 영역 */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 100%;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  margin-top: 3rem;
+  /* text-transform: uppercase; */
+  letter-spacing: 0.05em;
+  position: relative; /* 🛑 absolute이면 layout 무너질 수 있음 */
+  z-index: 1; /* 높여야 덮이지 않음 */
+}
+
+
+/* 헤드라인 */
+.headline {
+  font-family: 'Poppins', monospace;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000000;
+  line-height: 1.2;
+  max-width: 800px; /* 고정된 최대 너비로 설정 */
+  /* margin-top: 2.5rem; */
+}
+
+/* 스토리 텍스트 */
+.story {
+  font-family: 'Poppins', monospace;
+  font-size: 1.3rem;
+  color: #000000; /* gray-300 */
+  line-height: 1.6;
+  max-width: 600px; /* 고정된 최대 너비로 설정 */
+}
+
+/* 팀원 프로필 */
+.teamProfiles {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profileImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileName {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.profileTitle {
+  font-size: 0.875rem;
+  color: #000000; /* gray-400 */
+}
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+  .aboutUs {
+    padding: 3rem 1.5rem;
+  }
+
+  .headline {
+    font-size: 2rem;
+    max-width: 90%;
+  }
+
+  .story {
+    font-size: 1.1rem;
+    max-width: 90%;
+  }
+
+  .teamProfiles {
+    display: flex !important;
+    flex-direction: row !important; /* 가로로 배치 */
+    flex-wrap: nowrap !important; /* 줄바꿈 방지 */
+    justify-content: space-between !important; /* 양쪽으로 배치 */
+    align-items: center;
+    gap: 1rem !important; /* 간격 조정 */
+    width: 100%; /* 전체 너비 사용 */
+  }
+
+  .profile {
+    flex: 0 0 48% !important; /* 각 프로필이 48% 너비를 차지 (여백 고려) */
+    max-width: 48% !important; /* 최대 너비 제한 */
+    justify-content: center; /* 프로필 내부 요소 가운데 정렬 */
+    box-sizing: border-box;
+    text-align: center; /* 텍스트 가운데 정렬 */
+  }
+
+  .profile div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutUs {
+    padding: 1rem 2rem !important;
+    /* min-height: 700px는 주석 처리된 상태로 유지하며, 33.33vh 적용 */
+  }
+
+  .headline {
+    font-size: 1.5rem;
+    max-width: 100%;
+  }
+
+  .story {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+
+  .teamProfiles {
+    display: flex !important;
+    flex-direction: row !important; /* 가로로 배치 */
+    flex-wrap: nowrap !important; /* 줄바꿈 방지 */
+    justify-content: space-between !important; /* 양쪽으로 배치 */
+    align-items: center;
+    gap: 0.5rem !important; /* 간격 조정 */
+    width: 100%;
+  }
+
+  .profile {
+    flex: 0 0 48% !important; /* 각 프로필이 48% 너비를 차지 (여백 고려) */
+    max-width: 48% !important; /* 최대 너비 제한 */
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .profile div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profileImage {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profileName {
+    font-size: 0.9rem;
+  }
+
+  .profileTitle {
+    font-size: 0.8rem;
+  }
+
+  .socialIcon {
+    width: 18px;
+    height: 18px;
+  }
+}

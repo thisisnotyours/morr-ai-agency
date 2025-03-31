@@ -1,0 +1,172 @@
+.features {
+  width: 100%;
+  padding: 4rem 2rem;
+  background: #f9fafb;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* ✅ 내부 요소 가운데 정렬 */
+  text-align: center;        /* ✅ 텍스트도 가운데 */
+}
+
+
+.badge {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #111827;
+  font-size: 0rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;         /* ✅ Regular */
+  padding: 4px 10px;
+  border-radius: 9999px;
+  margin: 2rem auto 1rem auto;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-align: center;
+}
+
+/* 헤드라인과 서브헤딩 스타일 */
+.features :global(.headline),
+.features h2 {
+  font-family: 'Poppins', monospace;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  /* margin-top: 6rem; */
+  margin-bottom: 0.5rem;
+  /* padding-top: 3rem; */
+  line-height: 1.2;
+}
+
+.features :global(.subheading),
+.features p {
+  font-family: 'Poppins', monospace;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #000000;
+  line-height: 1.5;
+}
+
+/* 아코디언 컨테이너 스타일 */
+.features :global(.accordion-container) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0; /* 상단 마진 제거 */
+}
+
+/* 각 아코디언 아이템 스타일 */
+.features :global(.accordion-item) {
+  background-color: #ffffff;
+  border-radius: 0;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0;
+}
+
+/* 아코디언 헤더 (타이틀) 스타일 */
+.features :global(.accordion-header) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem 3rem; /* 하단 패딩 줄임 (기존 1rem → 0.5rem) */
+  cursor: pointer;
+  font-family: 'Inconsolata', monospace !important; /* 폰트 변경, 우선순위 높임 */
+  font-size: 1.8rem; /* 폰트 사이즈 키움 (기존 1.5rem → 1.8rem) */
+  font-weight: 600;
+  color: #1f2937;
+  transition: background-color 0.3s ease;
+}
+
+/* 아코디언 헤더 내부 h6 스타일 */
+.features :global(.accordion-header h6) {
+  font-family: 'Inconsolata', monospace !important; /* h6 태그에도 폰트 적용 */
+}
+
+/* 아코디언 헤더 호버 스타일 */
+.features :global(.accordion-header:hover) {
+  background-color: #f3f4f6;
+}
+
+/* 아코디언 콘텐츠 스타일 */
+.features :global(.accordion-content) {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding: 0.5rem 1.5rem 1.5rem; /* 상단 패딩 줄임 (기존 1.5rem → 0.5rem) */
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+/* 이미지 스타일 */
+.features :global(.accordion-content img) {
+  width: 30%;
+  max-height: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+  .features {
+    padding: 1rem 2rem !important; /* 상하 1rem, 좌우 2rem으로 유지 */
+    box-sizing: border-box;
+  }
+
+  .features :global(.headline),
+  .features h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .features :global(.subheading),
+  .features p {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .features :global(.accordion-header) {
+    font-family: 'Inconsolata', monospace !important; /* 폰트 유지 */
+    font-size: 1.5rem; /* 폰트 사이즈 키움 (기존 1.2rem → 1.5rem) */
+    padding: 1rem 1.2rem 0.5rem; /* 하단 패딩 줄임 (기존 1rem → 0.5rem) */
+  }
+
+  .features :global(.accordion-header h6) {
+    font-family: 'Inconsolata', monospace !important; /* h6 태그에도 폰트 적용 */
+  }
+
+  .features :global(.accordion-content) {
+    flex-direction: column;
+    padding: 0.5rem 1rem 1rem; /* 상단 패딩 줄임 (기존 1rem → 0.5rem) */
+    font-size: 0.9rem;
+  }
+
+  .features :global(.accordion-content img) {
+    width: 50%;
+    max-height: 150px;
+    margin: 0 auto;
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .features {
+    padding: 1rem 2rem !important; /* 상하 1rem, 좌우 2rem으로 유지 */
+    box-sizing: border-box;
+  }
+
+  .features :global(.headline),
+  .features h2 {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 0rem;
+  }
+
+  .features :global(.subheading),
+  .features p {
+    /* margin-top: 1.3rem; */
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+}

@@ -48,9 +48,10 @@ export const MenuItem = ({
 
   return (
     <div onMouseEnter={() => setActive(item)} className="relative">
+      {/* ⭐ 수정: text-lg 클래스 추가 */}
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white font-inconsolata text-lg"
         onClick={handleClick} // 메뉴 클릭 시 섹션으로 이동 및 드롭다운 닫기
       >
         {item}
@@ -118,7 +119,7 @@ export const FeatureItem = ({
         className="flex-shrink-0 rounded-md shadow-2xl"
       />
       <div>
-        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
+        <h4 className="text-1.5rem md:text-xl font-normal mb-1 text-black dark:text-white font-inconsolata md:font-inconsolata mobile:text-2xl">
           {title}
         </h4>
         <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
@@ -158,7 +159,7 @@ export const HoveredLink = ({
     <div
       onClick={handleClick}
       className={cn(
-        "text-neutral-700 dark:text-neutral-200 hover:text-black font-normal cursor-pointer",
+        "text-neutral-700 dark:text-neutral-200 hover:text-black font-normal cursor-pointer font-inconsolata text-base md:text-base mobile:text-xl",
         className
       )}
     >

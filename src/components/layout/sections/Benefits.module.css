@@ -1,0 +1,156 @@
+.benefits {
+  padding: 5rem 2rem;
+  /* background: linear-gradient(to bottom right, #f9fafb, #dbeafe); */
+  text-align: center;
+}
+
+.benefitsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headline {
+  font-family: 'Poppins', monospace;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.subheading {
+  font-family: 'Poppins', monospace;
+  font-size: 1.3rem;
+  /* color: #4a5568; */
+  color: #000000;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+  gap: 2rem;
+}
+
+.secondRow {
+  display: flex;
+  justify-content: center; /* Center the two items */
+  gap: 2rem;
+  grid-column: 1 / -1; /* Span the full width of the grid */
+}
+
+.benefitCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 360px; /* Match the approximate width of a single grid item */
+}
+
+.benefitCard:hover {
+  transform: translateY(-5px);
+}
+
+.benefitImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.benefitTitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  font-family: 'Poppins', monospace;
+}
+
+.benefitDescription {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.2;
+  max-width: 20rem;
+  margin: 0 auto;
+  font-family: 'Poppins', monospace;
+  /* font-weight: 500; */
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+  }
+
+  .secondRow {
+    display: flex;
+    justify-content: center; /* Still centered on tablet */
+    gap: 2rem;
+    grid-column: 1 / -1;
+  }
+
+  .headline {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .subheading {
+    font-family: 'Poppins', monospace;
+    font-size: 1.2rem;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .benefitsGrid {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+
+  .secondRow {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: center;
+    gap: 2rem;
+    grid-column: 1 / -1;
+  }
+
+  .headline {
+    font-family: 'Poppins', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .subheading {
+    font-family: 'Poppins', monospace;
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .benefitImage {
+    height: 120px;
+  }
+
+  .benefitTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', monospace;
+  }
+  
+  .benefitDescription {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.2;
+    max-width: 20rem;
+    margin: 0 auto;
+    font-family: 'Poppins', monospace;
+    /* font-weight: 500; */
+  }
+}
