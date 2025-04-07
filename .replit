@@ -1,0 +1,17 @@
+modules = ["nodejs-20", "web"]
+run = "npm start"              # ✅ dev 모드가 아니라 start로 변경 (build 후 실행)
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npm start"] # ✅ 배포 시에도 start 사용
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[[ports]]
+localPort = 3001
+externalPort = 3001

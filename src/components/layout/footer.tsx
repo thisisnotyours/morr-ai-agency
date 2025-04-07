@@ -21,11 +21,14 @@ export default function Footer() {
           className="text-xl sm:text-base text-center"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          <a href="/privacy-policy" className="hover:underline">
+          <a href="https://docs.google.com/document/d/1W1KWgADkllHhN1Iw6gFh4ShdxbauTKr59U-17wJEmI8/edit?usp=sharing" className="hover:underline">
             Privacy Policy
           </a>{" "}
           |{" "}
-          <a href="/terms-of-use" className="hover:underline">
+          <a
+            href="https://docs.google.com/document/d/1Xx09Y3iccTt3iBWpB1nQuCXyHIZ9d0AtzIRiE5wZs84/edit?usp=sharing"
+            className="hover:underline"
+          >
             Terms of Use
           </a>
         </p>
@@ -35,18 +38,19 @@ export default function Footer() {
           className="text-xl sm:text-base text-center"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          Find us: [
-          <a href="https://facebook.com" className="hover:underline">
+          Find us:
+          {/* <a href="https://facebook.com" className="hover:underline">
             Facebook
-          </a>{" "}
-          |{" "}
-          <a href="https://linkedin.com" className="hover:underline">
+          </a>{" "} */}{" "}
+          <a
+            href="https://www.linkedin.com/company/morrmy/"
+            className="hover:underline"
+          >
             LinkedIn
           </a>{" "}
-          |{" "}
-          <a href="https://instagram.com" className="hover:underline">
+          {/* <a href="https://instagram.com" className="hover:underline">
             Instagram
-          </a>]
+          </a> */}
         </p>
 
         {/* © 2025 MORR Technologies Sdn Bhd – Born and bred in Malaysia. */}

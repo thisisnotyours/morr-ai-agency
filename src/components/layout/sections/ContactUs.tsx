@@ -1,19 +1,44 @@
-import React from 'react';
-import styles from './Contactus.module.css'; // Import the CSS module
+"use client";
+import React from "react";
+import styles from "./Contactus.module.css";
 
 const ContactUs: React.FC = () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+
+    const data = {
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      email: form.email.value,
+      message: form.message.value,
+    };
+
+    const res = await fetch("/api/sendEmail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    if (result.success) {
+      alert("Email sent successfully!");
+      form.reset();
+    } else {
+      alert("Failed to send email.");
+    }
+  };
+
   return (
     <section id="contact">
       <div className={styles.container}>
         <div className={styles.innerContainer}>
-          {/* Main Container */}
           <div className={styles.card}>
-            {/* Header */}
             <h1 className={styles.heading}>
-              Morr delivers measurable results in sales, operations, and support.
+              Morr delivers measurable results in sales, operations, and
+              support.
             </h1>
 
-            {/* Call and Email Buttons */}
             <div className={styles.buttonContainer}>
               <button className={styles.callButton}>
                 <span className={styles.icon}>📞</span> Call
@@ -23,17 +48,18 @@ const ContactUs: React.FC = () => {
               </button>
             </div>
 
-            {/* Form Section */}
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.nameFields}>
                 <input
                   type="text"
+                  name="firstName"
                   placeholder="First name"
                   className={styles.input}
                   required
                 />
                 <input
                   type="text"
+                  name="lastName"
                   placeholder="Last name"
                   className={styles.input}
                   required
@@ -41,11 +67,13 @@ const ContactUs: React.FC = () => {
               </div>
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
                 className={styles.input}
                 required
               />
               <textarea
+                name="message"
                 placeholder="Your message"
                 className={styles.textarea}
                 rows={5}

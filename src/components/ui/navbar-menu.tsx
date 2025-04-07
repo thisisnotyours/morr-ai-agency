@@ -1,7 +1,5 @@
 "use client";
-import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -35,9 +33,8 @@ export const MenuItem = ({
   children?: React.ReactNode;
 }) => {
   // "Features" 메뉴일 경우 가운데 정렬, 나머지는 왼쪽 정렬
-  const dropdownPosition = item === "Features" 
-    ? "left-1/2 transform -translate-x-1/2" 
-    : "left-0";
+  const dropdownPosition =
+    item === "Features" ? "left-1/2 transform -translate-x-1/2" : "left-0";
 
   // 메뉴 클릭 시 해당 섹션으로 이동
   const sectionId = item.toLowerCase().replace(" ", "-"); // 예: "Use Cases" → "use-cases"
@@ -63,7 +60,9 @@ export const MenuItem = ({
           transition={transition}
         >
           {active === item && (
-            <div className={`absolute top-[calc(100%_+_1.2rem)] ${dropdownPosition} pt-4`}>
+            <div
+              className={`absolute top-[calc(100%_+_1.2rem)] ${dropdownPosition} pt-4`}
+            >
               <motion.div
                 transition={transition}
                 layoutId="active"
@@ -110,11 +109,15 @@ export const FeatureItem = ({
   };
 
   return (
-    <div onClick={handleClick} className="flex space-x-2 cursor-pointer">
+    <div
+      onClick={handleClick}
+      className="flex space-x-2 cursor-pointer items-start"
+    >
       <Image
         src={src}
         width={140}
-        height={70}
+        height={0} // 높이를 0으로 설정하고 auto로 조정
+        style={{ height: "auto" }} // 높이를 이미지 비율에 맞게 자동 조정
         alt={title}
         className="flex-shrink-0 rounded-md shadow-2xl"
       />
@@ -160,7 +163,7 @@ export const HoveredLink = ({
       onClick={handleClick}
       className={cn(
         "text-neutral-700 dark:text-neutral-200 hover:text-black font-normal cursor-pointer font-inconsolata text-base md:text-base mobile:text-xl",
-        className
+        className,
       )}
     >
       {children}

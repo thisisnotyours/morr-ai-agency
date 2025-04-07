@@ -3,6 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* globals.css 또는 main CSS 파일 맨 아래 추가 */
+#__next-route-announcer,
+[aria-label="Next.js App Router more info"] {
+  display: none !important;
+}
+
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -76,9 +83,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-    /* MORR 색상 추가 */
-    --morr-main: #b5002b;
-    --morr-sub: #F5CABB;
+  /* MORR 색상 추가 */
+  --morr-main: #b5002b;
+  --morr-sub: #F5CABB;
 }
 
 .dark {
@@ -119,6 +126,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -128,4 +136,3 @@
 html {
   scroll-behavior: smooth;
 }
-

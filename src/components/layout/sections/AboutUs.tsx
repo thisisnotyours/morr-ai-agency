@@ -16,7 +16,11 @@ export default function AboutUs() {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   return (
@@ -44,11 +48,17 @@ export default function AboutUs() {
             initial="hidden"
             animate={isStoryInView ? "visible" : "hidden"}
           >
-            At MORR we are obsessed with one thing: making your customer experience unstoppable. Our voice AI agent and chatbot aren’t just tech—they’re your new frontline, built from the ground up to handle real Malaysian conversations. Think fast answers, local vibes, and zero downtime. We’re here to help businesses like yours thrive, whether you’re a small shop in KL or a brand going nationwide. Let’s turn every interaction into a win.
+            At MORR we are obsessed with one thing: making your customer
+            experience unstoppable. Our voice AI agent and chatbot aren’t just
+            tech—they’re your new frontline, built from the ground up to handle
+            real Malaysian conversations. Think fast answers, local vibes, and
+            zero downtime. We’re here to help businesses like yours thrive,
+            whether you’re a small shop in KL or a brand going nationwide. Let’s
+            turn every interaction into a win.
           </motion.p>
 
           {/* Team section with motion */}
-          <motion.div
+          {/* <motion.div
             ref={teamRef}
             className={styles.teamProfiles}
             variants={fadeInUp}
@@ -100,7 +110,7 @@ export default function AboutUs() {
                 />
               </a>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

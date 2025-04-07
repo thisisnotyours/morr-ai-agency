@@ -80,8 +80,8 @@ const Feature197 = ({ features = defaultFeatures }: Feature197Props) => {
                     <h6
                       className={`${
                         tab.title === "Malaysian Multilingual Magic"
-                          ? "text-lg md:text-lg sm:text-md" // 특정 타이틀의 텍스트 사이즈 조정
-                          : "text-xl md:text-xl sm:text-lg" // 기본 타이틀 사이즈 축소
+                          ? "text-lg md:text-lg sm:text-md"
+                          : "text-xl md:text-xl sm:text-lg"
                       } font-normal ${tab.id === activeTabId ? "text-foreground" : "text-muted-foreground"}`}
                       style={{ fontFamily: "'Poppins', monospace" }}
                     >
@@ -93,7 +93,7 @@ const Feature197 = ({ features = defaultFeatures }: Feature197Props) => {
                     style={{ marginTop: 0, paddingTop: 0 }}
                   >
                     <p
-                      className="md:mt-1 sm:mt-0 text-sm text-muted-foreground text-left" // 간격 축소 및 사이즈 축소, 왼쪽 정렬
+                      className="md:mt-1 sm:mt-0 text-sm text-muted-foreground text-left"
                       style={{ marginTop: 0 }}
                     >
                       {tab.description}
@@ -117,7 +117,7 @@ const Feature197 = ({ features = defaultFeatures }: Feature197Props) => {
             <img
               src={activeImage}
               alt="Feature preview"
-              className="aspect-[4/3] rounded-md object-cover pl-4"
+              className="h-full w-full rounded-md object-cover" // pl-4 제거, h-full w-full 추가
             />
           </div>
         </div>
